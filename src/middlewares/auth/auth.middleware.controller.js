@@ -8,6 +8,8 @@ export class AuthController {
       // req.cookies에서 토큰 받아오기
       let { accessToken, refreshToken } = req.cookies;
 
+      console.log(refreshToken);
+
       // refreshToken없으면 에러던짐
       if (!refreshToken) {
         throw new Error("토큰이 존재하지 않습니다.");
@@ -36,17 +38,7 @@ export class AuthController {
     } catch (err) {
       res.clearCookie("refreshToken");
       res.clearCookie("accessToken");
-
-      switch (err.name) {
-        case "TokenExpiredError":
-          throw new Error("토큰이 만료되었습니다. 다시 로그인 해주세요.");
-
-        case "JsonWebTokenError":
-          throw new Error("토큰이 조작되었습니다.");
-
-        default:
-          throw new Error("비정상적인 요청입니다.");
-      }
+      next(err);
     }
   };
 }

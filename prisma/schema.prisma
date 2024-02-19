@@ -14,12 +14,12 @@ model Users {
   userName String   @map("userName")
   role     Role     @default(USER) @map("role")
   token    String?  @map("token")
-  resume   Resume[]
+  resume   Resumes[]
 
   @@map("Users")
 }
 
-model Resume {
+model Resumes {
   id        Int      @id @default(autoincrement()) @map("id")
   user_id   Int      @map("user_id")
   title     String   @map("title")
@@ -29,7 +29,7 @@ model Resume {
   user      Users    @relation(fields: [user_id], references: [id], onDelete: Cascade)
 
   @@index([user_id], map: "Resume_user_id_fkey")
-  @@map("Resume")
+  @@map("Resumes")
 }
 
 enum Status {

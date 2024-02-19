@@ -18,17 +18,31 @@ export default function (err, req, res, next) {
     case err.message.includes("토큰 사용자가 존재하지 않"):
       return res.status(401).json({ errorMessage: err.message });
 
-    case err.message.includes("토큰이 만료되었습니다. 다시 로그인 해주세요."):
+    case err.message.includes("토큰이 만료"):
       return res.status(401).json({ errorMessage: err.message });
 
-    case err.message.includes("토큰이 조작되었습니다."):
+    case err.message.includes("토큰이 조작"):
       return res.status(401).json({ errorMessage: err.message });
 
-    case err.message.includes("비정상적인 요청입니다."):
+    case err.message.includes("비정상적인 요청"):
       return res.status(401).json({ errorMessage: err.message });
 
-    case err.message.includes("토큰 타입이 일치하지 않습니다."):
+    case err.message.includes("토큰 타입이 일치하지 않"):
       return res.status(401).json({ errorMessage: err.message });
+
+    case err.message.includes("필수 항목이 누락"):
+      return res.status(400).json({ errorMessage: err.message });
+
+    case err.name.includes("TokenExpiredError"):
+      return res
+        .status(401)
+        .json({ errorMessage: "토큰이 만료되었습니다. 다시 로그인 해주세요." });
+
+    case err.name.includes("JsonWebTokenError"):
+      return res.status(401).json({ errorMessage: "토큰이 조작되었습니다." });
+
+    case err.message.includes("비정상적인 요청"):
+      return res.status(400).json({ errorMessage: err.message });
 
     default:
       return res
