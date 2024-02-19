@@ -6,7 +6,7 @@ import dotenv from "dotenv";
 import router from "./src/routes/index.js";
 import LogMiddleware from "./src/middlewares/log.middleware.js";
 import ErrorHandlingMiddleware from "./src/middlewares/error-handling.middleware.js";
-import typeOrmConnection from "./src/utils/index.js";
+// import typeOrmConnection from "./src/utils/index.js";
 
 dotenv.config();
 
