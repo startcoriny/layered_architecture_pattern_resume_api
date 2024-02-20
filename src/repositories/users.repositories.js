@@ -4,7 +4,7 @@ export class UsersRepositories {
     this.prisma = prisma;
   }
 
-  // 유저 찾기
+  // 유저 이메일로 찾기
   findByEmail = async (email) => {
     const findUser = await this.prisma.users.findFirst({
       where: {
@@ -40,6 +40,7 @@ export class UsersRepositories {
     return token;
   };
 
+  // 유저 아이디 찾기
   findById = async (id) => {
     const user = await this.prisma.users.findFirst({
       where: { id: +id },

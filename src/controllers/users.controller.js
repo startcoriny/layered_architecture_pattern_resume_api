@@ -46,7 +46,6 @@ export class UsersController {
       res.cookie("refreshToken", logInUser.refreshToken);
       return res.status(201).json({ data: logInUser });
     } catch (err) {
-      console.log("여기로 오는거임");
       next(err);
     }
   };
