@@ -53,6 +53,12 @@ export default function (err, req, res, next) {
     case err.message.includes("이력서를 삭제할 권한이 없"):
       return res.status(403).json({ errorMessage: err.message });
 
+    case err.message.includes("관리자만 조회"):
+      return res.status(403).json({ errorMessage: err.message });
+
+    case err.message.includes("관리자만 수정"):
+      return res.status(403).json({ errorMessage: err.message });
+
     default:
       return res
         .status(500)
