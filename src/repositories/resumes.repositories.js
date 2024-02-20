@@ -15,6 +15,7 @@ export class ResumesRepositories {
     return createdResume;
   };
 
+  // 이력서 전체조회
   findAllResumes = async (orderKey, orderValue) => {
     const resumes = this.prisma.resumes.findMany({
       select: {
@@ -35,5 +36,53 @@ export class ResumesRepositories {
       },
     });
     return resumes;
+  };
+
+  // 이력서 상세조회
+  getResumeById = async (resumeId) => {
+    const detailResume = await this.prisma.resumes.findFirst({
+      where: {
+        id: +resumeId,
+      },
+      select: {
+        id: true,
+        title: true,
+        context: true,
+        user_id: true,
+        user: {
+          select: {
+            userName: true,
+          },
+        },
+        status: true,
+        createdAt: true,
+      },
+    });
+    return detailResume;
+  };
+
+  //이력서 업데이트
+  updateResume = async (resumeId, title, context, status) => {
+    const updatedResume = await this.prisma.resumes.update({
+      where: {
+        id: +resumeId,
+      },
+      data: {
+        title,
+        context,
+        status,
+      },
+    });
+    return updatedResume;
+  };
+
+  // 이력서 삭제
+  deleteResume = async (resumeId) => {
+    const deletedResume = await this.prisma.resumes.delete({
+      where: {
+        id: +resumeId,
+      },
+    });
+    return deletedResume;
   };
 }

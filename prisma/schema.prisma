@@ -26,6 +26,7 @@ model Resumes {
   context   String   @map("context")
   status    Status   @default(APPLY) @map("status")
   createdAt DateTime @default(now()) @map("createdAt")
+  updatedAt DateTime @updatedAt @map("updatedAt")
   user      Users    @relation(fields: [user_id], references: [id], onDelete: Cascade)
 
   @@index([user_id], map: "Resume_user_id_fkey")

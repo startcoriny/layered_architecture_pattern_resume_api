@@ -44,6 +44,15 @@ export default function (err, req, res, next) {
     case err.message.includes("비정상적인 요청"):
       return res.status(400).json({ errorMessage: err.message });
 
+    case err.message.includes("존재하지 않는 이력서"):
+      return res.status(404).json({ errorMessage: err.message });
+
+    case err.message.includes("이력서를 수정할 권한이 없"):
+      return res.status(403).json({ errorMessage: err.message });
+
+    case err.message.includes("이력서를 삭제할 권한이 없"):
+      return res.status(403).json({ errorMessage: err.message });
+
     default:
       return res
         .status(500)

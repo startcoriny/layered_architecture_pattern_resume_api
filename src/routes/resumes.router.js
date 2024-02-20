@@ -19,21 +19,21 @@ router.post("/", authController.authMiddleWare, resumesController.createResume);
 // 이력서 전체조회
 router.get("/", resumesController.getResumes);
 
-// // 이력서 상세조회
-// router.get("/:id", resumesController.getResumeById);
+// 이력서 상세조회
+router.get("/:resumeId", resumesController.getResumeById);
 
-// // 이력서 수정
-// router.patch(
-//   "/:id",
-//   authController.authMiddleWare,
-//   resumesController.updateResume
-// );
+// 이력서 수정
+router.patch(
+  "/:resumeId",
+  authController.authMiddleWare,
+  resumesController.updateResume
+);
 
-// // 이력서 삭제
-// router.delete(
-//   "/:id",
-//   authController.authMiddleWare,
-//   resumesController.deleteResume
-// );
+// 이력서 삭제
+router.delete(
+  "/:resumeId",
+  authController.authMiddleWare,
+  resumesController.deleteResume
+);
 
 export default router;
