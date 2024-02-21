@@ -1,5 +1,5 @@
 # resume_api경로
- - <a href="http://54.180.121.240:3005/">3-layer_아키텍쳐 패턴_resume_api<a>
+ - <a href="http://13.208.184.68:3005/">3-layer_아키텍쳐 패턴_resume_api<a>
 
 # 더 고민해 보기
 1. **Class로 리팩토링 했을 때 장점**
