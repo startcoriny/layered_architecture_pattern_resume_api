@@ -1,4 +1,3 @@
-import cookieParser from "cookie-parser";
 import { beforeEach, describe, expect, jest } from "@jest/globals";
 import { UsersController } from "../../../src/controllers/users.controller";
 const mockUsersService = {

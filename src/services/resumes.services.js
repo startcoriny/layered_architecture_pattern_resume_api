@@ -32,7 +32,6 @@ export class ResumesServices {
       return {
         id: resume.id,
         user_id: resume.user_id,
-        userName: resume.userName,
         title: resume.title,
         status: resume.status,
         createdAt: resume.createdAt,

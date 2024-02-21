@@ -23,11 +23,6 @@ export class ResumesRepositories {
         title: true,
         context: true,
         user_id: true,
-        user: {
-          select: {
-            userName: true,
-          },
-        },
         status: true,
         createdAt: true,
       },

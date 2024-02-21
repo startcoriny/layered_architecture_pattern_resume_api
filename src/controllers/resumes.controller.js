@@ -108,10 +108,7 @@ export class ResumesController {
       const { resumeId } = req.params;
       const { id } = req.user;
 
-      const deletedResume = await this.ResumesServices.deleteResume(
-        resumeId,
-        id
-      );
+      await this.ResumesServices.deleteResume(resumeId, id);
 
       return res.status(204).end();
     } catch (err) {
