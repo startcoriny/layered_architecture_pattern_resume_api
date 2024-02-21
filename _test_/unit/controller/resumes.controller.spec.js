@@ -26,7 +26,7 @@ const mockNext = jest.fn();
 
 const resumesController = new ResumesController(mockResumesService);
 
-describe("Resumes Controller unit Test", () => {
+describe("Admin Controller unit Test", () => {
   beforeEach(() => {
     jest.resetAllMocks();
     mockResponse.status.mockReturnValue(mockResponse);

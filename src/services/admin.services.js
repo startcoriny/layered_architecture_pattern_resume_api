@@ -15,6 +15,7 @@ export class AdminServices {
         context: resume.context,
         status: resume.status,
         createdAt: resume.createdAt,
+        updatedAt: resume.updatedAt,
       };
     });
   };
@@ -39,6 +40,7 @@ export class AdminServices {
       context: updatedResume.context,
       status: updatedResume.status,
       createdAt: updatedResume.createdAt,
+      updatedAt: resume.updatedAt,
     };
   };
 }
