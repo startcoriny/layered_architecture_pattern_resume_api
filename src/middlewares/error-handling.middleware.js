@@ -60,6 +60,7 @@ export default function (err, req, res, next) {
       return res.status(403).json({ errorMessage: err.message });
 
     default:
+      console.log(err.message);
       return res
         .status(500)
         .json({ errorMessage: "서버 내부 에러가 발생했습니다." });

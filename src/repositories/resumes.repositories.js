@@ -1,3 +1,5 @@
+import dataSource from "../typeorm/index.js";
+
 export class ResumesRepositories {
   constructor(prisma) {
     this.prisma = prisma;
@@ -35,7 +37,7 @@ export class ResumesRepositories {
 
   // 이력서 상세조회
   getResumeById = async (resumeId) => {
-    const detailResume = await this.prisma.resumes.findFirst({
+    const detailResume = await dataSource.getRepository("resumes").findOne({
       where: {
         id: +resumeId,
       },
@@ -44,7 +46,7 @@ export class ResumesRepositories {
         title: true,
         context: true,
         user_id: true,
-        user: {
+        users: {
           select: {
             userName: true,
           },
